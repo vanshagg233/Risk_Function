@@ -27,23 +27,23 @@ def createSorted():
     final_df.to_csv('grouped_by_vin.csv', index=False)
 
 def getFreq():
-    sorted = pd.read_csv('grouped_by_vin.csv', parse_dates=['Report Submission Date'])
+    sort = pd.read_csv('grouped_by_vin.csv', parse_dates=['Report Submission Date'])
     results = []
     current_vin = None
     current_company = None
 
     count = 0
-    start_date = sorted.to_datetime('5/1/24')
-    end_date = sorted.to_datetime('5/1/25')
+    start_date = pd.to_datetime('5/1/24')
+    end_date = pd.to_datetime('5/1/25')
 
 
-    for _, row in df.iterrows():
+    for _, row in sort.iterrows():
         report_id = str(row["Report ID"])
 
         # Check if row is a VIN group header like "--- VIN: abc123 ---
         if report_id.startswith("--- VIN:"):
             # Save the previous group if exists
-            if current_vin is not None:
+            if current_vin is not None and count != 0:
                 results.append([current_company, current_vin, count])
 
             # Extract new VIN from the header
@@ -52,18 +52,18 @@ def getFreq():
             current_company = None
             count = 0
         elif pd.notna(row["Same Vehicle ID"]):
-            if pd.to_datetime(row['Report Submission Date']) >= start_date 
-            count += 1
             if current_company is None:
                 current_company = row["Reporting Entity"]
+            if start_date <= pd.to_datetime(row['Report Submission Date']) <= end_date:
+                count += 1
 
     # Don't forget to save the last group
-    if current_vin is not None:
+    if current_vin is not None and count != 0:
         results.append([current_company, current_vin, count])
 
     # Create output DataFrame and save to CSV
     freq_df = pd.DataFrame(results, columns=["Company Name", "Same Vehicle ID", "Frequency"])
-    freq_df.to_csv(output_csv, index=False)
-    print(f"Frequency summary saved to: {output_csv}") 
+    freq_df.to_csv('crash_freq.csv', index=False)
+    print(f"Frequency summary saved to: crash_freq.csv") 
 
 
