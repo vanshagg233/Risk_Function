@@ -1,5 +1,7 @@
 import pandas as pd
 import re
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 
 def createSorted():
@@ -66,4 +68,21 @@ def getFreq():
     freq_df.to_csv('crash_freq.csv', index=False)
     print(f"Frequency summary saved to: crash_freq.csv") 
 
+def timeOfDay():
+    # Load your CSV
+    data = pd.read_csv('your_file.csv', parse_dates=['Timestamp'])
 
+    # Extract the hour from the timestamp
+    data['Hour'] = data['Timestamp'].dt.hour
+
+    # Create the histogram
+    plt.hist(data['Hour'], bins=24, range=(0, 24), edgecolor='black')
+
+    # Labeling
+    plt.xlabel('Hour of Day')
+    plt.ylabel('Number of Incidents')
+    plt.title('Incident Frequency by Hour')
+    plt.xticks(range(0, 24))  # Show all hour marks
+    plt.grid(axis='y')
+
+    plt.show()
