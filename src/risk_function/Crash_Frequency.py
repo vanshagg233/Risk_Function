@@ -70,13 +70,16 @@ def getFreq():
 
 def timeOfDay():
     # Load your CSV
-    data = pd.read_csv('your_file.csv', parse_dates=['Timestamp'])
+    data = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv')
+
+    # Convert 'Incident Time (24:00)' to datetime (handling inconsistent formats)
+    incident_times = pd.to_datetime(data['Incident Time (24:00)'], format='%H:%M', errors='coerce')
 
     # Extract the hour from the timestamp
-    data['Hour'] = data['Timestamp'].dt.hour
+    incident_hours = incident_times.dt.hour.dropna()
 
     # Create the histogram
-    plt.hist(data['Hour'], bins=24, range=(0, 24), edgecolor='black')
+    plt.hist(incident_hours, bins=24, range=(0, 24), edgecolor='black')
 
     # Labeling
     plt.xlabel('Hour of Day')
@@ -85,4 +88,35 @@ def timeOfDay():
     plt.xticks(range(0, 24))  # Show all hour marks
     plt.grid(axis='y')
 
+    plt.savefig('incident_histogram.png', dpi=300)
+    plt.show()
+
+
+def timeOfDay(start_month, start_year, end_month, end_year):
+    # Load your CSV
+    data = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv', parse_dates=['Report Submission Date'])
+
+    # Create start and end datetime objects
+    start_date = pd.Timestamp(year=start_year, month=start_month, day=1)
+    end_date = pd.Timestamp(year=end_year, month=end_month, day=1) + pd.offsets.MonthEnd(1)
+    
+    filtered_data = data[(data['Report Submission Date'] >= start_date) & (data['Report Submission Date'] <= end_date)]
+
+    # Convert 'Incident Time (24:00)' to datetime (handling inconsistent formats)
+    incident_times = pd.to_datetime(filtered_data['Incident Time (24:00)'], format='%H:%M', errors='coerce')
+
+    # Extract the hour from the timestamp
+    incident_hours = incident_times.dt.hour.dropna()
+
+    # Create the histogram
+    plt.hist(incident_hours, bins=24, range=(0, 24), edgecolor='black')
+
+    # Labeling
+    plt.xlabel('Hour of Day')
+    plt.ylabel('Number of Incidents')
+    plt.title('Incident Frequency by Hour')
+    plt.xticks(range(0, 24))  # Show all hour marks
+    plt.grid(axis='y')
+
+    plt.savefig('annual_incident_histogram_from_' + str(start_month) + str(start_year) + '.png', dpi=300)
     plt.show()
