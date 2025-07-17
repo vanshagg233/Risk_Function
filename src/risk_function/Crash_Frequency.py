@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import statistics
 
 
 def createSorted():
@@ -120,3 +121,14 @@ def timeOfDay(start_month, start_year, end_month, end_year):
 
     plt.savefig('annual_incident_histogram_from_' + str(start_month) + str(start_year) + '.png', dpi=300)
     plt.show()
+    
+    
+def getMode(file, column):
+    data = pd.read_csv(file)
+    arr = []
+    for row in data.iterrows():
+        num = str(row[column])
+        arr.append(num)
+    print(statistics.mode(arr))
+        
+    
