@@ -123,7 +123,7 @@ def timeOfDay(start_month, start_year, end_month, end_year):
     plt.show()
     
     
-def calculate(file, column):
+def toArray(file, column):
     data = pd.read_csv(file)
     arr = []
     for _, row in data.iterrows():
@@ -134,36 +134,12 @@ def calculate(file, column):
             continue
     return arr
 
-def getMode(file, column):
-    arr = calculate(file, column)
-    ret = str(statistics.mode(arr))
-    print('Mode: ' + ret)
-    
-def getMean(file, column):
-    arr = calculate(file, column)
-    ret = str(statistics.mean(arr))
-    print('Mean: ' + ret)
-
-def getMedian(file, column):
-    arr = calculate(file, column)
-    ret = str(statistics.median(arr))
-    print('Median: ' + ret)
-    
-def getHistogram(file, column):
-    arr = calculate(file, column)
-    counts, bins, patches = plt.hist(arr, bins=10, edgecolor='black')
-    
-    for count, left, right in zip(counts, bins[:-1], bins[1:]):
-        x = (left + right) / 2
-        y = count
-        plt.text(x, y + 0.1, str(int(count)), ha='center')
-
-    plt.xlim(0,5)
-    plt.title('Histogram')
-    plt.xlabel('Value')
-    plt.ylabel('Frequency')
-    plt.savefig('frequency_histogram.png', dpi=300)
-    plt.show()
+def fleetFreq():
+    data = pd.read_csv("crash_freq.csv")
+    results = data.groupby("Company Name")["Frequency"].aggregate(["count", "sum"]).reset_index()
+    results["Average Crashes Per Car"] = (results["sum"] / results["count"]).round(2)
+    results.columns = ["Company Name", "Cars Involved", "Total Crashes", "Average Crashes Per Car"]
+    results.to_csv("fleet_size_crash.csv", index=False)
     
 
     
