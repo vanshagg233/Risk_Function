@@ -62,9 +62,9 @@ def getSeverityHistogram(file, column):
         plt.text(i, count + 0.1, str(count), ha='center')
 
     plt.xticks(rotation=45, ha='right')
-    plt.title(f'Frequency of {column}')
+    plt.title('Histogram of ' + file)
     plt.xlabel(column)
     plt.ylabel('Frequency')
     plt.tight_layout()
-    plt.savefig(f'frequency_histogram_{column}.png', dpi=300)
+    plt.savefig(f'histogram_{file}.png', dpi=300)
     plt.show()
