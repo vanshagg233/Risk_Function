@@ -151,6 +151,14 @@ def filterClear():
     resultsDf = pd.DataFrame(results)
     resultsDf.to_csv("clear_weather_incidents.csv", index=False)
     
+def filterSnow():
+    data = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv', on_bad_lines='skip')
+    results = []
+    for _, row in data.iterrows():
+        if (row["Weather - Snow"] == "Y"):
+            results.append(row)
+    resultsDf = pd.DataFrame(results)
+    resultsDf.to_csv("snow_weather_incidents.csv", index=False)
     
     
     
