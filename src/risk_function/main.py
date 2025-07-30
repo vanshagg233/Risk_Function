@@ -10,5 +10,5 @@ import Stat_Calculation
 # Stat_Calculation.getHistogram('crash_freq.csv','Frequency')
 #Crash_Frequency.fleetFreq()
 #Crash_Frequency.filterClear()
-Stat_Calculation.getSeverityHistogram('cloudy_weather_incidents.csv','Highest Injury Severity Alleged')
-#Crash_Frequency.filterCloudy()
+Stat_Calculation.getSeverityHistogram('rainy_weather_incidents.csv','Highest Injury Severity Alleged')
+Crash_Frequency.filterRain()
