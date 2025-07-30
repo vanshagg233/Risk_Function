@@ -8,4 +8,6 @@ import Stat_Calculation
 # Stat_Calculation.getMean('crash_freq.csv','Frequency')
 # Stat_Calculation.getMedian('crash_freq.csv','Frequency')
 # Stat_Calculation.getHistogram('crash_freq.csv','Frequency')
-Crash_Frequency.fleetFreq()
+#Crash_Frequency.fleetFreq()
+#Crash_Frequency.filterClear()
+Stat_Calculation.getSeverityHistogram('clear_weather_incidents.csv','Highest Injury Severity Alleged')

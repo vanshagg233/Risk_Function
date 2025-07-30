@@ -142,4 +142,17 @@ def fleetFreq():
     results.to_csv("fleet_size_crash.csv", index=False)
     
 
+def filterClear():
+    data = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv', on_bad_lines='skip')
+    results = []
+    for _, row in data.iterrows():
+        if (row["Weather - Clear"] == "Y"):
+            results.append(row)
+    resultsDf = pd.DataFrame(results)
+    resultsDf.to_csv("clear_weather_incidents.csv", index=False)
+    
+    
+    
+    
+
     
