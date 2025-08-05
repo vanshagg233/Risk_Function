@@ -67,3 +67,10 @@ def getSeverityHistogram(file, column, order):
     plt.tight_layout()
     plt.savefig(f'histogram_{file}.png', dpi=300)
     plt.show()
+
+def createTimeHist(start_month, start_year, end_month, end_year):
+    Crash_Frequency.timeOfDay(start_month, start_year, end_month, end_year, 'SGO-2021-01_Incident_Reports_ADS.csv')
+    Crash_Frequency.timeOfDay(start_month, start_year, end_month, end_year, 'clear_weather_incidents.csv')
+    Crash_Frequency.timeOfDay(start_month, start_year, end_month, end_year, 'cloudy_weather_incidents.csv')
+    Crash_Frequency.timeOfDay(start_month, start_year, end_month, end_year, 'rainy_weather_incidents.csv')
+

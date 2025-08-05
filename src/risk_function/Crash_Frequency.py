@@ -93,9 +93,9 @@ def timeOfDay():
     plt.show()
 
 
-def timeOfDay(start_month, start_year, end_month, end_year):
+def timeOfDay(start_month, start_year, end_month, end_year, file):
     # Load your CSV
-    data = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv', parse_dates=['Report Submission Date'])
+    data = pd.read_csv(file, parse_dates=['Report Submission Date'], on_bad_lines='skip')
 
     # Create start and end datetime objects
     start_date = pd.Timestamp(year=start_year, month=start_month, day=1)
@@ -115,11 +115,11 @@ def timeOfDay(start_month, start_year, end_month, end_year):
     # Labeling
     plt.xlabel('Hour of Day')
     plt.ylabel('Number of Incidents')
-    plt.title('Incident Frequency by Hour')
+    plt.title('Incident Frequency by Hour \n' + str(start_month) + '-' + str(start_year) + ' to ' + str(end_month) + "-" + str(end_year) + '\n' + file, pad=4)
     plt.xticks(range(0, 24))  # Show all hour marks
     plt.grid(axis='y')
 
-    plt.savefig('annual_incident_histogram_from_' + str(start_month) + str(start_year) + '.png', dpi=300)
+    plt.savefig('incident_histogram_from_' + str(start_month) + str(start_year) + '_for_' + file + '.png', dpi=300)
     plt.show()
     
     
