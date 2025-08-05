@@ -37,7 +37,7 @@ def getHistogram(file, column):
     plt.savefig('frequency_histogram.png', dpi=300)
     plt.show()
     
-def getSeverityHistogram(file, column):
+def getSeverityHistogram(file, column, order):
     df = pd.read_csv(file)
     arr = df[column].dropna().tolist()
 
@@ -48,7 +48,6 @@ def getSeverityHistogram(file, column):
     freq = Counter(arr)
     print(f"Frequency Counter: {freq}")
 
-    order = ["No Injuries Reported", "Minor", "Moderate","Serious", "Fatality", "Unknown"]
     labels = [label for label in order if label in freq]
     counts = [freq[label] for label in labels]
 
