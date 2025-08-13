@@ -64,14 +64,14 @@ def getSeverityHistogram(file, column, order):
     plt.show()
 
 def getOrder(column):
+    # Read CSV without converting "None" to NaN
     df = pd.read_csv('SGO-2021-01_Incident_Reports_ADS.csv', on_bad_lines='skip', keep_default_na=False)
 
-    # Get all unique values in the column
-    unique_values = df['Driver / Operator Type'].unique()
-    order = []
-    # Print each one surrounded by quotes to see hidden spaces/characters
-    for val in unique_values:
-        order.append(val)
+    # Get all unique values in the column, stripping whitespace
+    unique_values = df[column].dropna().map(lambda x: str(x).strip()).unique()
+
+    # Convert to list
+    order = list(unique_values)
     return order
     
 
@@ -149,9 +149,37 @@ def createODDHist():
 
 #column "Driver / Operator Type"
 def createOperatorHist():
-    #order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
-    order = getOrder("Driver / Operator Type")
+    order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
+    #order = getOrder("Driver / Operator Type")
     getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Driver / Operator Type', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+#column "ADS Equipped?"
+def createADSEquippedHist():
+    order = ["Yes", "No"]
+    #order = getOrder("ADS Equipped?")
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','ADS Equipped?', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+
+#column "City"
+def createCityHist():
+    #order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
+    order = getOrder("City")
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','City', order[:10])
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+#column "State"
+def createStateHist():
+    #order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
+    order = getOrder("State")
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','State', order)
     #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)

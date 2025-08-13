@@ -29,5 +29,10 @@ import pandas as pd
 
 #Stat_Calculation.createODDHist()
 
-Stat_Calculation.createOperatorHist()
+#Stat_Calculation.createOperatorHist()
 
+#Stat_Calculation.createADSEquippedHist()
+
+#Stat_Calculation.createCityHist()
+
+Stat_Calculation.createStateHist()
