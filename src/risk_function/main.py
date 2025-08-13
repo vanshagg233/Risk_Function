@@ -20,6 +20,10 @@ import Stat_Calculation
 
 #Stat_Calculation.createRoadTypeHist()
 
-Stat_Calculation.createPropDamageHist()
+#Stat_Calculation.createPropDamageHist()
+
+#Stat_Calculation.createTowedHist()
+
+Stat_Calculation.createInvestigatingHist()
 
 
