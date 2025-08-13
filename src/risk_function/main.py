@@ -1,5 +1,6 @@
 import Crash_Frequency
 import Stat_Calculation
+import pandas as pd
 
 # Crash_Frequency.createSorted()
 # Crash_Frequency.getFreq()
@@ -24,6 +25,9 @@ import Stat_Calculation
 
 #Stat_Calculation.createTowedHist()
 
-Stat_Calculation.createInvestigatingHist()
+#Stat_Calculation.createInvestigatingHist()
 
+#Stat_Calculation.createODDHist()
+
+Stat_Calculation.createOperatorHist()
 
