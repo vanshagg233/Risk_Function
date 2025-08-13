@@ -14,5 +14,7 @@ import Stat_Calculation
 
 #Stat_Calculation.createSevHist()
 
-Stat_Calculation.createTypeHist()
+#Stat_Calculation.createTypeHist()
+
+Stat_Calculation.createCrashWithHist()
 

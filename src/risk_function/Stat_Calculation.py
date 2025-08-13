@@ -81,3 +81,12 @@ def createTypeHist():
     getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
     getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
     getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+#column "Crash With"
+def createCrashWithHist():
+    order = ["Passenger Car", "SUV", "Pickup Truck", "Van", "Heavy Truck", "Bus", "Non-Motorist: Cyclist", "Other Fixed Object", "Other, see Narrative"]
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Crash With', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
