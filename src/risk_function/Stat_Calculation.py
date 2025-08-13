@@ -90,3 +90,12 @@ def createCrashWithHist():
     #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
 
+
+#column "Roadway Type"
+def createRoadTypeHist():
+    order = ["Street", "Intersection", "Highway / Freeway", "Parking Lot"]
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Roadway Type', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+

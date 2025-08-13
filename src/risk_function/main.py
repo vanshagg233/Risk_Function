@@ -16,5 +16,8 @@ import Stat_Calculation
 
 #Stat_Calculation.createTypeHist()
 
-Stat_Calculation.createCrashWithHist()
+#Stat_Calculation.createCrashWithHist()
+
+Stat_Calculation.createRoadTypeHist()
+
 
