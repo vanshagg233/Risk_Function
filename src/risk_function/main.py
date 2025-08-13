@@ -35,4 +35,8 @@ import pandas as pd
 
 #Stat_Calculation.createCityHist()
 
-Stat_Calculation.createStateHist()
+#Stat_Calculation.createStateHist()
+
+#Stat_Calculation.createRoadwaySurfaceHist()
+
+Stat_Calculation.createLightingHist()

@@ -183,3 +183,22 @@ def createStateHist():
     #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+
+#column "Roadway Surface"
+def createRoadwaySurfaceHist():
+    #order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
+    order = getOrder("Roadway Surface")
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Roadway Surface', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
+#column "Lighting"
+def createLightingHist():
+    #order = ["None", "In-Vehicle (Commercial / Test)", "In-Vehicle and Remote (Commercial / Test)", "Remote (Commercial / Test)"]
+    order = getOrder("Lighting")
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Lighting', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
