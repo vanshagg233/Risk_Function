@@ -18,6 +18,8 @@ import Stat_Calculation
 
 #Stat_Calculation.createCrashWithHist()
 
-Stat_Calculation.createRoadTypeHist()
+#Stat_Calculation.createRoadTypeHist()
+
+Stat_Calculation.createPropDamageHist()
 
 

@@ -99,3 +99,12 @@ def createRoadTypeHist():
     #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
     #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
 
+
+#column "Property Damage"
+def createPropDamageHist():
+    order = ["Yes", "No"]
+    getSeverityHistogram('SGO-2021-01_Incident_Reports_ADS.csv','Property Damage?', order)
+    #getSeverityHistogram('clear_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('cloudy_weather_incidents.csv','SV Pre-Crash Movement', order)
+    #getSeverityHistogram('rainy_weather_incidents.csv','SV Pre-Crash Movement', order)
+
