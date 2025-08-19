@@ -1,6 +1,6 @@
 import Crash_Frequency
 import Stat_Calculation
-import pandas as pd
+import Waymo_Analysis
 
 # Crash_Frequency.createSorted()
 # Crash_Frequency.getFreq()
@@ -39,4 +39,6 @@ import pandas as pd
 
 #Stat_Calculation.createRoadwaySurfaceHist()
 
-Stat_Calculation.createLightingHist()
+#Stat_Calculation.createLightingHist()
+
+Waymo_Analysis.combine()
