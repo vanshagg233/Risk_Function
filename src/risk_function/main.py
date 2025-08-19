@@ -1,6 +1,7 @@
 import Crash_Frequency
 import Stat_Calculation
 import Waymo_Analysis
+import Spliter
 
 # Crash_Frequency.createSorted()
 # Crash_Frequency.getFreq()
@@ -41,4 +42,6 @@ import Waymo_Analysis
 
 #Stat_Calculation.createLightingHist()
 
-Waymo_Analysis.combine()
+#Waymo_Analysis.combine()
+
+Spliter.split_by_category("SGO-2021-01_Incident_Reports_ADS.csv","State")
